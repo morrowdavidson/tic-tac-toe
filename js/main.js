@@ -27,12 +27,33 @@ function playTrigger(squareId){
         }       
     };
 
-
 }
 
 function checkWinCondition(){
     if ((gameBoard['tl'] != e) && (gameBoard['tl'] == gameBoard['tm']) && (gameBoard['tm'] == gameBoard['tr'])){
-        console.log(currentPlayer + ' is the winner!')
+        console.log(currentPlayer + ' is the winner!');
     }
+    if ((gameBoard['tl'] != e) && (gameBoard['tl'] == gameBoard['ml']) && (gameBoard['ml'] == gameBoard['bl'])){
+        console.log(currentPlayer + ' is the winner!');
+    }
+    if ((gameBoard['tl'] != e) && (gameBoard['tl'] == gameBoard['mm']) && (gameBoard['mm'] == gameBoard['br'])){
+        console.log(currentPlayer + ' is the winner!');
+    }
+    if ((gameBoard['tm'] != e) && (gameBoard['tm'] == gameBoard['mm']) && (gameBoard['mm'] == gameBoard['bm'])){
+        console.log(currentPlayer + ' is the winner!');
+    }
+    if ((gameBoard['tr'] != e) && (gameBoard['tr'] == gameBoard['mr']) && (gameBoard['mr'] == gameBoard['br'])){
+        console.log(currentPlayer + ' is the winner!');
+    }
+    if ((gameBoard['tr'] != e) && (gameBoard['tr'] == gameBoard['mm']) && (gameBoard['mm'] == gameBoard['bl'])){
+        console.log(currentPlayer + ' is the winner!');
+    }
+    if ((gameBoard['ml'] != e) && (gameBoard['ml'] == gameBoard['mm']) && (gameBoard['mm'] == gameBoard['mr'])){
+        console.log(currentPlayer + ' is the winner!');
+    }
+    if ((gameBoard['bl'] != e) && (gameBoard['bl'] == gameBoard['bm']) && (gameBoard['bm'] == gameBoard['br'])){
+        console.log(currentPlayer + ' is the winner!');
+    }
+
 }
 
