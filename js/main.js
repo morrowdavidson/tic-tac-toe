@@ -1,44 +1,38 @@
 
 let currentPlayer = 'O';
 
+let e = "empty";
+let gameBoard = {tl:e,tm:e,tr:e,ml:e,mm:e,mr:e,bl:e,bm:e,br:e};
 
-const Player = function(noughtOrCross) {
-    this.noughtOrCross = noughtOrCross;
-    this.playSquare = (squareId) => {
- 
-        let square = document.getElementById(squareId);   
+document.getElementById("gameBoardTable").addEventListener("click", function(){
+    let squareId = event.target.id;
+    playTrigger(squareId);
+});
+
+function playTrigger(squareId){
+    let square = document.getElementById(squareId); 
+    
+    gameBoard[squareId] = currentPlayer;
         
-        if (square.innerHTML == "'") { 
+    if (square.innerHTML == "'") { 
 
-            square.innerHTML = noughtOrCross; 
+        square.innerHTML = currentPlayer; 
 
-            if (currentPlayer == 'X'){
-                currentPlayer = '0';
-            } else {
-                currentPlayer = 'X';
-            }       
-        };
+        checkWinCondition();
 
-    };
-};
-
-const noughtPlayer = new Player('O');
-const crossPlayer = new Player('X');
-
-
-const GameBoard = (() => {
-    let e = "empty";
-    let gameboard = {tl:e,tm:e,tr:e,ml:e,mm:e,mr:e,bl:e,bm:e,br:e};
-
-    document.getElementById("gameBoardTable").addEventListener("click", function(){
-        let squareId = event.target.id
         if (currentPlayer == 'X'){
-            crossPlayer.playSquare(squareId);
+            currentPlayer = 'O';
         } else {
-            noughtPlayer.playSquare(squareId)
-        }
-    });
+            currentPlayer = 'X';
+        }       
+    };
 
-})();
 
+}
+
+function checkWinCondition(){
+    if ((gameBoard['tl'] != e) && (gameBoard['tl'] == gameBoard['tm']) && (gameBoard['tm'] == gameBoard['tr'])){
+        console.log(currentPlayer + ' is the winner!')
+    }
+}
 
